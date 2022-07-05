@@ -1,6 +1,7 @@
 package ir.maktab74;
 
 import java.util.*;
+import java.util.function.BiFunction;
 import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.groupingBy;
@@ -18,7 +19,7 @@ public class App {
                         firstProgram();
                         break;
                     case 2:
-//                        secondProgram();
+                        secondProgram();
                         break;
                     case 3:
 //                        thirdProgram();
@@ -41,11 +42,40 @@ public class App {
 
         Map<Integer, List<String>> listMap = names.stream().collect(groupingBy(String::length));
 
-        /*listMap.forEach(
-                (a,b) -> System.out.println(a + "=" + b)
-        );*/
-
         System.out.println(listMap);
+    }
+
+    private static void secondProgram() {
+        List<String> names = new ArrayList<>(Arrays.asList(
+                "Ahmad", "Ali", "Milad", "Yousof", "Mohammad", "Hesam", "Reza", "Amir", "Mehran"
+        ));
+
+        Map<Integer, List<String>> listMap = names.stream().collect(groupingBy(String::length));
+
+        listMap.forEach(
+                (a,b) -> System.out.println(a + "=" + b + " " + b.size())
+        );
+    }
+
+    private static void thirdProgram() {
+        BiFunction<Float, Float, Float> average = (a, b) -> {
+            return (a + b) / 2;
+        };
+
+        while (true) {
+            try {
+                System.out.println("plz enter first number: ");
+                float firstNumber = scanner.nextFloat();
+
+                System.out.println("plz enter second number: ");
+                float secondNumber = scanner.nextFloat();
+
+                System.out.println(average.apply(firstNumber, secondNumber));
+            }catch (Exception e){
+                System.out.println("please enter the correct value!!!");
+                scanner.next();
+            }
+        }
     }
 
     public static void showMainMenu() {
