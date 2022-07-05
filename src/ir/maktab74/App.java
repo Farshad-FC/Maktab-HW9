@@ -2,6 +2,7 @@ package ir.maktab74;
 
 import java.util.*;
 import java.util.function.BiFunction;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.groupingBy;
@@ -10,7 +11,8 @@ public class App {
     public static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        global:while (true) {
+        global:
+        while (true) {
             try {
                 showMainMenu();
                 int inputNumber = scanner.nextInt();
@@ -22,10 +24,10 @@ public class App {
                         secondProgram();
                         break;
                     case 3:
-//                        thirdProgram();
+                        thirdProgram();
                         break;
                     case 4:
-//                        fourthProgram();
+                        fourthProgram();
                         break;
                     case 5:
                         break global;
@@ -53,7 +55,7 @@ public class App {
         Map<Integer, List<String>> listMap = names.stream().collect(groupingBy(String::length));
 
         listMap.forEach(
-                (a,b) -> System.out.println(a + "=" + b + " " + b.size())
+                (a, b) -> System.out.println(a + "=" + b + " " + b.size())
         );
     }
 
@@ -64,18 +66,36 @@ public class App {
 
         while (true) {
             try {
-                System.out.println("plz enter first number: ");
+                System.out.print("plz enter first number: ");
                 float firstNumber = scanner.nextFloat();
 
-                System.out.println("plz enter second number: ");
+                System.out.print("plz enter second number: ");
                 float secondNumber = scanner.nextFloat();
 
-                System.out.println(average.apply(firstNumber, secondNumber));
-            }catch (Exception e){
+                System.out.format("average = " + average.apply(firstNumber, secondNumber));
+            } catch (Exception e) {
                 System.out.println("please enter the correct value!!!");
                 scanner.next();
             }
         }
+    }
+
+    private static void fourthProgram() {
+        BiFunction<String, String, Boolean> function = (a, b) -> {
+            if (a.startsWith(b) && a.endsWith(b))
+                return true;
+            else
+                return false;
+        };
+
+        System.out.print("plz enter a string: ");
+        String inputString = scanner.next();
+
+        System.out.print("plz enter a character: ");
+        String inputChar = scanner.next();
+
+        System.out.println(function.apply(inputString, inputChar));
+
     }
 
     public static void showMainMenu() {
