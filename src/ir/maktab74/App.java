@@ -30,6 +30,9 @@ public class App {
                         fourthProgram();
                         break;
                     case 5:
+                        fifthProgram();
+                        break;
+                    case 6:
                         break global;
                 }
             } catch (Exception e) {
@@ -98,12 +101,24 @@ public class App {
 
     }
 
+    private static void fifthProgram() {
+        ArrayList<Integer> nums = new ArrayList<>();
+        nums.add(3);
+        nums.add(5);
+        nums.add(1);
+        nums.stream()
+                .filter(val -> val > 1)
+                .forEach(val -> System.out.println(val));
+    }
+
     public static void showMainMenu() {
+        System.out.println("=".repeat(20));
         System.out.println("1: first program");
         System.out.println("2: second program");
         System.out.println("3: third program");
         System.out.println("4: fourth program");
-        System.out.println("5: exit");
+        System.out.println("5: fifth program");
+        System.out.println("6: exit");
         System.out.print("plz choose a number: ");
     }
 }
