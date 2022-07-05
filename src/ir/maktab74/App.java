@@ -1,12 +1,15 @@
 package ir.maktab74;
 
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.groupingBy;
 
 public class App {
     public static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        while (true) {
+        global:while (true) {
             try {
                 showMainMenu();
                 int inputNumber = scanner.nextInt();
@@ -15,19 +18,34 @@ public class App {
                         firstProgram();
                         break;
                     case 2:
-                        secondProgram();
+//                        secondProgram();
                         break;
                     case 3:
-                        thirdProgram();
+//                        thirdProgram();
                         break;
                     case 4:
-                        fourthProgram();
+//                        fourthProgram();
                         break;
+                    case 5:
+                        break global;
                 }
             } catch (Exception e) {
                 System.out.println("please enter the correct value!!!");
+                scanner.next();
             }
         }
+    }
+
+    private static void firstProgram() {
+        List<String> names = new ArrayList<>(Arrays.asList("Ahmad", "Ali", "Milad", "Yousof", "Mohammad", "Hesam", "Reza"));
+
+        Map<Integer, List<String>> listMap = names.stream().collect(groupingBy(String::length));
+
+        /*listMap.forEach(
+                (a,b) -> System.out.println(a + "=" + b)
+        );*/
+
+        System.out.println(listMap);
     }
 
     public static void showMainMenu() {
@@ -35,6 +53,7 @@ public class App {
         System.out.println("2: second program");
         System.out.println("3: third program");
         System.out.println("4: fourth program");
+        System.out.println("5: exit");
         System.out.print("plz choose a number: ");
     }
 }
