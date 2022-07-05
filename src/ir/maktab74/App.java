@@ -76,6 +76,7 @@ public class App {
                 float secondNumber = scanner.nextFloat();
 
                 System.out.format("average = " + average.apply(firstNumber, secondNumber));
+                break;
             } catch (Exception e) {
                 System.out.println("please enter the correct value!!!");
                 scanner.next();
